@@ -8,58 +8,72 @@ export default function Home() {
     <div className="min-h-screen bg-white overflow-x-hidden">
       <Navigation />
 
-      {/* Hero Section - Fully Responsive with proper spacing */}
-      <section className="relative h-screen flex items-center justify-center pt-20 lg:pt-24">
-        {/* Background with Parallax Effect */}
-        <div className="absolute inset-0">
-          <div 
-            className="absolute inset-0 bg-cover bg-center lg:bg-fixed scale-110 transition-transform duration-1000"
-            style={{ backgroundImage: 'url(/banner.jpg)' }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-        </div>
-        
-        {/* Floating Content */}
-        <div className="relative z-10 text-center text-white max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="animate-fade-in-up">
-            <span className="inline-block px-4 sm:px-6 py-2 bg-white/10 backdrop-blur-md rounded-full text-xs sm:text-sm font-medium tracking-wide mb-6 sm:mb-8 border border-white/20">
-              BUILDING KAMLOOPS FOR 30+ YEARS
+{/* Hero Section - Left-Aligned Split Layout */}
+<section className="relative h-screen flex items-center justify-center">
+  {/* Background with Parallax Effect */}
+  <div className="absolute inset-0">
+    <div 
+      className="absolute inset-0 bg-cover bg-center lg:bg-fixed scale-110 transition-transform duration-1000"
+      style={{ backgroundImage: 'url(/banner.jpg)' }}
+    />
+    <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-transparent" />
+    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+  </div>
+  
+  {/* Split Layout Content */}
+  <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[80vh]">
+      
+      {/* Left Side - Text Content */}
+      <div className="text-white text-center lg:text-left">
+        <div className="animate-fade-in-up">
+          <span className="inline-block px-3 sm:px-4 md:px-6 py-2 bg-white/10 backdrop-blur-md rounded-full text-xs sm:text-sm font-medium tracking-wide mb-4 sm:mb-6 lg:mb-8 border border-white/20">
+            BUILDING KAMLOOPS FOR 30+ YEARS
+          </span>
+          
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-none tracking-tight">
+            <span className="block">EXCEPTIONAL</span>
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">
+              CRAFTSMANSHIP
             </span>
-            
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 sm:mb-8 leading-none tracking-tight">
-              <span className="block">EXCEPTIONAL</span>
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">
-                CRAFTSMANSHIP
-              </span>
-            </h1>
-            
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-8 sm:mb-12 text-gray-200 max-w-3xl mx-auto leading-relaxed font-light">
-              From custom homes to commercial developments, we transform visions into reality with 
-              uncompromising quality and innovative design
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
-              <button className="w-full sm:w-auto group bg-white text-black px-8 sm:px-10 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all duration-500 hover:bg-amber-400 hover:scale-110 hover:shadow-2xl flex items-center justify-center">
-                Start Your Project
-                <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-              
-              <button className="group flex items-center text-white hover:text-amber-400 transition-colors duration-300">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2 border-white/30 flex items-center justify-center mr-3 sm:mr-4 group-hover:border-amber-400 group-hover:scale-110 transition-all duration-300">
-                  <Play className="h-5 w-5 sm:h-6 sm:w-6 ml-1" />
-                </div>
-                <span className="text-base sm:text-lg font-medium">Watch Our Story</span>
-              </button>
-            </div>
+          </h1>
+          
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl mb-6 sm:mb-8 lg:mb-12 text-gray-200 leading-relaxed font-light">
+            From custom homes to commercial developments, we transform visions into reality with 
+            uncompromising quality and innovative design
+          </p>
+        </div>
+      </div>
+
+      {/* Right Side - Action Button & Stats */}
+      <div className="flex flex-col items-center lg:items-start justify-center space-y-6 lg:space-y-8">
+        
+        {/* Primary CTA Button */}
+        <button className="w-full sm:w-auto group bg-white text-black px-6 sm:px-8 lg:px-10 py-3 sm:py-4 rounded-full text-base sm:text-lg lg:text-xl font-semibold transition-all duration-500 hover:bg-amber-400 hover:scale-105 hover:shadow-2xl flex items-center justify-center">
+          Start Your Project
+          <ArrowRight className="ml-2 sm:ml-3 h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 group-hover:translate-x-1 transition-transform" />
+        </button>
+
+        {/* Company Stats */}
+        <div className="grid grid-cols-2 gap-6 sm:gap-8 lg:gap-12 text-center lg:text-left w-full max-w-xs lg:max-w-none">
+          <div>
+            <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-amber-400 mb-1 sm:mb-2">30+</div>
+            <div className="text-xs sm:text-sm text-gray-300 uppercase tracking-wide">Years Experience</div>
+          </div>
+          <div>
+            <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-amber-400 mb-1 sm:mb-2">93+</div>
+            <div className="text-xs sm:text-sm text-gray-300 uppercase tracking-wide">Projects Completed</div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ArrowDown className="h-5 w-5 sm:h-6 sm:w-6 text-white/70" />
-        </div>
-      </section>
+  {/* Scroll Indicator */}
+  <div className="absolute bottom-4 sm:bottom-6 lg:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <ArrowDown className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 text-white/70" />
+  </div>
+</section>
 
       {/* About Us Section - Improved Layout */}
       <section className="relative bg-white py-16 sm:py-20 lg:py-24">
@@ -88,7 +102,7 @@ export default function Home() {
                   <div className="text-xs sm:text-sm text-gray-500 uppercase tracking-wide">Years Experience</div>
                 </div>
                 <div className="text-center lg:text-left">
-                  <div className="text-2xl sm:text-3xl font-bold text-amber-500 mb-2">500+</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-amber-500 mb-2">93+</div>
                   <div className="text-xs sm:text-sm text-gray-500 uppercase tracking-wide">Projects Completed</div>
                 </div>
               </div>
