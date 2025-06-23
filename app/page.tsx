@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, Play, Award, Users, Calendar, ArrowDown } from 'lucide-react'
+import { ArrowRight, Award, ArrowDown } from 'lucide-react'
 import Navigation from '../components/Navigation'
 import Footer from '../components/Footer'
 
@@ -49,10 +49,13 @@ export default function Home() {
       <div className="flex flex-col items-center lg:items-start justify-center space-y-6 lg:space-y-8">
         
         {/* Primary CTA Button */}
-        <button className="w-full sm:w-auto group bg-white text-black px-6 sm:px-8 lg:px-10 py-3 sm:py-4 rounded-full text-base sm:text-lg lg:text-xl font-semibold transition-all duration-500 hover:bg-amber-400 hover:scale-105 hover:shadow-2xl flex items-center justify-center">
-          Start Your Project
-          <ArrowRight className="ml-2 sm:ml-3 h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 group-hover:translate-x-1 transition-transform" />
-        </button>
+        <Link 
+  href="/projects"
+  className="w-full sm:w-auto group bg-white text-black px-6 sm:px-8 lg:px-10 py-3 sm:py-4 rounded-full text-base sm:text-lg lg:text-xl font-semibold transition-all duration-500 hover:bg-amber-400 hover:scale-105 hover:shadow-2xl flex items-center justify-center"
+>
+  View Projects
+  <ArrowRight className="ml-2 sm:ml-3 h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 group-hover:translate-x-1 transition-transform" />
+</Link>
 
         {/* Company Stats */}
         <div className="grid grid-cols-2 gap-6 sm:gap-8 lg:gap-12 text-center lg:text-left w-full max-w-xs lg:max-w-none">
@@ -61,7 +64,7 @@ export default function Home() {
             <div className="text-xs sm:text-sm text-gray-300 uppercase tracking-wide">Years Experience</div>
           </div>
           <div>
-            <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-amber-400 mb-1 sm:mb-2">93+</div>
+            <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-amber-400 mb-1 sm:mb-2">17+</div>
             <div className="text-xs sm:text-sm text-gray-300 uppercase tracking-wide">Projects Completed</div>
           </div>
         </div>
@@ -102,7 +105,7 @@ export default function Home() {
                   <div className="text-xs sm:text-sm text-gray-500 uppercase tracking-wide">Years Experience</div>
                 </div>
                 <div className="text-center lg:text-left">
-                  <div className="text-2xl sm:text-3xl font-bold text-amber-500 mb-2">93+</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-amber-500 mb-2">17+</div>
                   <div className="text-xs sm:text-sm text-gray-500 uppercase tracking-wide">Projects Completed</div>
                 </div>
               </div>
@@ -120,7 +123,7 @@ export default function Home() {
               <div className="aspect-[4/3] lg:aspect-square">
                 <div 
                   className="w-full h-full bg-cover bg-center hover:scale-105 transition-transform duration-700"
-                  style={{ backgroundImage: 'url(/banner.jpg)' }}
+                  style={{ backgroundImage: 'url(/projects/1470-capilano/32.jpg)' }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
               </div>
@@ -144,7 +147,7 @@ export default function Home() {
             </h2>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Hodder Construction is continually moving forward to keep up with the demands and changes 
-              of today's construction technology.
+              of today&apos;s construction technology.
             </p>
           </div>
           
@@ -160,7 +163,7 @@ export default function Home() {
                 <div className="absolute bottom-6 sm:bottom-8 left-6 sm:left-8 right-6 sm:right-8 text-white">
                   <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">Custom Homes</h3>
                   <p className="text-base sm:text-lg mb-4 sm:mb-6 text-white/90 leading-relaxed">
-                    Find the dream home you've been looking for, or let us build it for you with exceptional craftsmanship.
+                    Find the dream home you&apos;ve been looking for, or let us build it for you with exceptional craftsmanship.
                   </p>
                   <Link href="/sales" className="inline-flex items-center text-white font-semibold hover:text-amber-200 transition-colors group/link">
                     <span className="border-b border-white/50 pb-1 text-sm sm:text-base">VIEW HOMES</span>
@@ -207,77 +210,79 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Project Section - Mobile Responsive */}
-      <section className="relative py-16 sm:py-20 lg:py-24 bg-gray-900 text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
+{/* Featured Project Section - Mobile Responsive */}
+<section className="relative py-16 sm:py-20 lg:py-24 bg-gray-900 text-white overflow-hidden">
+  <div className="absolute inset-0 opacity-10">
+    <div 
+      className="absolute inset-0 bg-cover bg-center"
+      style={{ backgroundImage: 'url(/projects/1470-capilano/23.jpg)' }}
+    />
+  </div>
+  
+  <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 items-center">
+      
+      {/* Content */}
+      <div className="order-2 lg:order-1">
+        <span className="inline-block px-3 sm:px-4 py-1 bg-white/10 rounded-full text-xs sm:text-sm font-medium tracking-wide mb-4 sm:mb-6">
+          FEATURED PROJECT
+        </span>
+        
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 leading-tight">
+          Capilano
+          <span className="block text-amber-400">Estate</span>
+        </h2>
+        
+        <h3 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">1470 Capilano Place</h3>
+        
+        <p className="text-lg sm:text-xl text-gray-300 mb-6 sm:mb-8 leading-relaxed">
+          Absolutely stunning view estate property with tons of privacy, located on over 4.5 acres 
+          featuring resort living with guest house. Sprawling rancher with heated infinity saltwater 
+          pool and breathtaking South Thompson River views.
+        </p>
+        
+        <div className="grid grid-cols-3 gap-4 sm:gap-8 mb-6 sm:mb-8">
+          <div className="text-center">
+            <div className="text-xl sm:text-2xl font-bold text-amber-400">4.5+</div>
+            <div className="text-xs sm:text-sm text-gray-400 uppercase tracking-wide">Acres</div>
+          </div>
+          <div className="text-center">
+            <div className="text-xl sm:text-2xl font-bold text-amber-400">$2M+</div>
+            <div className="text-xs sm:text-sm text-gray-400 uppercase tracking-wide">Investment</div>
+          </div>
+          <div className="text-center">
+            <div className="text-xl sm:text-2xl font-bold text-amber-400">2016</div>
+            <div className="text-xs sm:text-sm text-gray-400 uppercase tracking-wide">Completed</div>
+          </div>
+        </div>
+        
+        <Link href="/projects/1470-capilano" className="w-full sm:w-auto inline-block bg-amber-500 hover:bg-amber-400 text-black px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl text-center">
+          View Project Details
+        </Link>
+      </div>
+      
+      {/* Project Visualization */}
+      <div className="relative order-1 lg:order-2">
+        <div className="aspect-square rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
           <div 
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: 'url(/banner.jpg)' }}
+            className="w-full h-full bg-cover bg-center hover:scale-105 transition-transform duration-700"
+            style={{ backgroundImage: 'url(/projects/1470-capilano/1.jpg)' }}
           />
         </div>
         
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 items-center">
-            
-            {/* Content */}
-            <div className="order-2 lg:order-1">
-              <span className="inline-block px-3 sm:px-4 py-1 bg-white/10 rounded-full text-xs sm:text-sm font-medium tracking-wide mb-4 sm:mb-6">
-                FEATURED PROJECT
-              </span>
-              
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 leading-tight">
-                Coming in
-                <span className="block text-amber-400">2025</span>
-              </h2>
-              
-              <h3 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Luxury Residential Complex</h3>
-              
-              <p className="text-lg sm:text-xl text-gray-300 mb-6 sm:mb-8 leading-relaxed">
-                A groundbreaking development featuring modern architecture, sustainable design, 
-                and premium amenities in the heart of Kamloops.
-              </p>
-              
-              <div className="grid grid-cols-3 gap-4 sm:gap-8 mb-6 sm:mb-8">
-                <div className="text-center">
-                  <div className="text-xl sm:text-2xl font-bold text-amber-400">120</div>
-                  <div className="text-xs sm:text-sm text-gray-400 uppercase tracking-wide">Units</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-xl sm:text-2xl font-bold text-amber-400">$45M</div>
-                  <div className="text-xs sm:text-sm text-gray-400 uppercase tracking-wide">Investment</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-xl sm:text-2xl font-bold text-amber-400">2025</div>
-                  <div className="text-xs sm:text-sm text-gray-400 uppercase tracking-wide">Completion</div>
-                </div>
-              </div>
-              
-              <button className="w-full sm:w-auto bg-amber-500 hover:bg-amber-400 text-black px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl">
-                View Project Details
-              </button>
-            </div>
-            
-            {/* Project Visualization */}
-            <div className="relative order-1 lg:order-2">
-              <div className="aspect-square rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
-                <div 
-                  className="w-full h-full bg-cover bg-center hover:scale-105 transition-transform duration-700"
-                  style={{ backgroundImage: 'url(/banner.jpg)' }}
-                />
-              </div>
-              
-              {/* Floating Stats - Responsive */}
-              <div className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 bg-white text-black p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-xl">
-                <div className="text-center">
-                  <Award className="h-6 w-6 sm:h-8 sm:w-8 text-amber-500 mx-auto mb-2" />
-                  <div className="text-sm sm:text-lg font-bold">Award Winning</div>
-                  <div className="text-xs sm:text-sm text-gray-600">Design Excellence</div>
-                </div>
-              </div>
-            </div>
+        {/* Floating Stats - Responsive */}
+        <div className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 bg-white text-black p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-xl">
+          <div className="text-center">
+            <Award className="h-6 w-6 sm:h-8 sm:w-8 text-amber-500 mx-auto mb-2" />
+            <div className="text-sm sm:text-lg font-bold">Estate Living</div>
+            <div className="text-xs sm:text-sm text-gray-600">Resort Amenities</div>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* CTA Section - Mobile Responsive */}
       <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-amber-50 to-orange-50">
@@ -288,7 +293,7 @@ export default function Home() {
           </h2>
           
           <p className="text-lg sm:text-xl text-gray-600 mb-8 sm:mb-12 leading-relaxed">
-            Let's discuss your next project and bring your dreams to life with our expertise and craftsmanship.
+            Let&apos;s discuss your next project and bring your dreams to life with our expertise and craftsmanship.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">

@@ -1,9 +1,37 @@
-import Link from 'next/link'
-import { ArrowRight, Users, Award, Building, Wrench, MapPin, Clock, Star, Mail, Phone } from 'lucide-react'
+'use client'
+
+import { ArrowRight, Users, Award, Building, Wrench, MapPin, Clock, Star, Mail, } from 'lucide-react'
 import Navigation from '../../components/Navigation'
 import Footer from '../../components/Footer'
+import { useEffect } from 'react'
 
 export default function About() {
+  useEffect(() => {
+    // Smooth scroll to anchor after page loads
+    const handleHashScroll = () => {
+      const hash = window.location.hash
+      if (hash) {
+        setTimeout(() => {
+          const element = document.querySelector(hash)
+          if (element) {
+            element.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            })
+          }
+        }, 500) // Small delay to let page fully load first
+      }
+    }
+
+    // Run on initial load
+    handleHashScroll()
+
+    // Also run if hash changes while on the page
+    window.addEventListener('hashchange', handleHashScroll)
+    
+    return () => window.removeEventListener('hashchange', handleHashScroll)
+  }, [])
+
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
@@ -182,7 +210,7 @@ export default function About() {
       </section>
 
       {/* Join Our Team Section */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-white">
+      <section id="joinus" className="py-16 sm:py-20 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             
@@ -221,7 +249,7 @@ export default function About() {
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-amber-500 rounded-full mt-3 flex-shrink-0"></div>
-                  <p className="text-gray-600">Valid Driver's Licence is an asset</p>
+                  <p className="text-gray-600">Valid Driver&apos;s Licence is an asset</p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-amber-500 rounded-full mt-3 flex-shrink-0"></div>
@@ -259,7 +287,7 @@ export default function About() {
               <span className="block text-amber-500">Serve You</span>
             </h2>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Beyond construction, we've expanded to serve our community with quality rental properties, innovative automotive solutions, and essential home services.
+              Beyond construction, we&apos;ve expanded to serve our community with quality rental properties, innovative automotive solutions, and essential home services.
             </p>
           </div>
           
@@ -401,7 +429,7 @@ export default function About() {
               <span className="block text-amber-400">Your Project?</span>
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              We stand proudly behind what we build. Let's discuss how we can bring your vision to life.
+              We stand proudly behind what we build. Let&apos;s discuss how we can bring your vision to life.
             </p>
           </div>
           

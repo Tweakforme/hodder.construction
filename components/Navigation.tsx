@@ -5,6 +5,21 @@ import { useState, useEffect } from 'react'
 import { ChevronDown } from 'lucide-react'
 import Image from 'next/image'
 
+// Type definitions
+interface NavigationItem {
+  title: string
+  href: string
+  desc: string
+  external?: boolean
+}
+
+interface NavigationSection {
+  title: string
+  key: string
+  color: string
+  items: NavigationItem[]
+}
+
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
@@ -20,7 +35,7 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const navigationItems = [
+  const navigationItems: NavigationSection[] = [
     {
       title: 'For Sale',
       key: 'sale',
@@ -36,8 +51,7 @@ export default function Navigation() {
       key: 'rent',
       color: 'emerald',
       items: [
-        { title: 'Rental Properties', href: '/rentals', desc: 'Find your perfect rental' },
-        { title: 'Inquiry & Application', href: '/rental-application', desc: 'Apply for rentals' }
+        { title: 'Rental Properties', href: 'https://rentalskamloops.ca', desc: 'Redirects to rentalskamloops.ca', external: true }
       ]
     },
     {
@@ -159,19 +173,37 @@ export default function Navigation() {
                       <div className={`absolute inset-0 bg-gradient-to-br ${getColorClasses(item.color)}`} />
                       <div className="relative p-3 space-y-1">
                         {item.items.map((subItem, index) => (
-                          <Link
-                            key={index}
-                            href={subItem.href}
-                            className="group/item flex items-center p-2 rounded-lg hover:bg-white/50 transition-all duration-300"
-                          >
-                            <div className={`w-1.5 h-1.5 ${getDotColor(item.color)} rounded-full mr-3 group-hover/item:scale-125 transition-transform`} />
-                            <div>
-                              <div className="font-medium text-gray-900 text-sm group-hover/item:text-amber-600 transition-colors">
-                                {subItem.title}
+                          subItem.external ? (
+                            <a
+                              key={index}
+                              href={subItem.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="group/item flex items-center p-2 rounded-lg hover:bg-white/50 transition-all duration-300"
+                            >
+                              <div className={`w-1.5 h-1.5 ${getDotColor(item.color)} rounded-full mr-3 group-hover/item:scale-125 transition-transform`} />
+                              <div>
+                                <div className="font-medium text-gray-900 text-sm group-hover/item:text-amber-600 transition-colors">
+                                  {subItem.title}
+                                </div>
+                                <div className="text-xs text-gray-600">{subItem.desc}</div>
                               </div>
-                              <div className="text-xs text-gray-600">{subItem.desc}</div>
-                            </div>
-                          </Link>
+                            </a>
+                          ) : (
+                            <Link
+                              key={index}
+                              href={subItem.href}
+                              className="group/item flex items-center p-2 rounded-lg hover:bg-white/50 transition-all duration-300"
+                            >
+                              <div className={`w-1.5 h-1.5 ${getDotColor(item.color)} rounded-full mr-3 group-hover/item:scale-125 transition-transform`} />
+                              <div>
+                                <div className="font-medium text-gray-900 text-sm group-hover/item:text-amber-600 transition-colors">
+                                  {subItem.title}
+                                </div>
+                                <div className="text-xs text-gray-600">{subItem.desc}</div>
+                              </div>
+                            </Link>
+                          )
                         ))}
                       </div>
                     </div>
@@ -344,21 +376,41 @@ export default function Navigation() {
                   {/* Submenu Items */}
                   <div className="space-y-3">
                     {navigationItems.find(item => item.key === mobileSubmenu)?.items.map((subItem, index) => (
-                      <Link
-                        key={index}
-                        href={subItem.href}
-                        className={`block p-5 rounded-2xl bg-white/30 hover:bg-white/50 transition-all duration-300 group ${getHoverColor(navigationItems.find(item => item.key === mobileSubmenu)?.color || 'amber')}`}
-                        onClick={() => {
-                          setIsMobileMenuOpen(false)
-                          setMobileSubmenu(null)
-                        }}
-                        style={{ animationDelay: `${index * 100}ms` }}
-                      >
-                        <div className="font-semibold text-gray-900 group-hover:text-current transition-colors text-lg mb-1">
-                          {subItem.title}
-                        </div>
-                        <div className="text-sm text-gray-600 leading-relaxed">{subItem.desc}</div>
-                      </Link>
+                      subItem.external ? (
+                        <a
+                          key={index}
+                          href={subItem.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`block p-5 rounded-2xl bg-white/30 hover:bg-white/50 transition-all duration-300 group ${getHoverColor(navigationItems.find(item => item.key === mobileSubmenu)?.color || 'amber')}`}
+                          onClick={() => {
+                            setIsMobileMenuOpen(false)
+                            setMobileSubmenu(null)
+                          }}
+                          style={{ animationDelay: `${index * 100}ms` }}
+                        >
+                          <div className="font-semibold text-gray-900 group-hover:text-current transition-colors text-lg mb-1">
+                            {subItem.title}
+                          </div>
+                          <div className="text-sm text-gray-600 leading-relaxed">{subItem.desc}</div>
+                        </a>
+                      ) : (
+                        <Link
+                          key={index}
+                          href={subItem.href}
+                          className={`block p-5 rounded-2xl bg-white/30 hover:bg-white/50 transition-all duration-300 group ${getHoverColor(navigationItems.find(item => item.key === mobileSubmenu)?.color || 'amber')}`}
+                          onClick={() => {
+                            setIsMobileMenuOpen(false)
+                            setMobileSubmenu(null)
+                          }}
+                          style={{ animationDelay: `${index * 100}ms` }}
+                        >
+                          <div className="font-semibold text-gray-900 group-hover:text-current transition-colors text-lg mb-1">
+                            {subItem.title}
+                          </div>
+                          <div className="text-sm text-gray-600 leading-relaxed">{subItem.desc}</div>
+                        </Link>
+                      )
                     ))}
                   </div>
                 </div>

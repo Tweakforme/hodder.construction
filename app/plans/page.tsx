@@ -2,19 +2,31 @@
 
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
-import { Search, Filter, Home, Bed, Bath, Car, Ruler, Grid, List, ChevronDown, X, Eye, ZoomIn, ZoomOut, RotateCcw } from 'lucide-react'
+import { Search, Home, Grid, List, X, Eye, ZoomIn, ZoomOut, RotateCcw } from 'lucide-react'
 import Navigation from '../../components/Navigation'
 import Footer from '../../components/Footer'
 
+// Type definitions
+interface Plan {
+  id: number
+  plan_number: string
+  images: string
+}
+
+interface PanPosition {
+  x: number
+  y: number
+}
+
 // Simple plan data - just plan number and image
-const createSimplePlan = (filename, index) => ({
+const createSimplePlan = (filename: string, index: number): Plan => ({
   id: index + 1,
   plan_number: filename.replace('.gif', ''),
   images: filename
 })
 
 // Fetch plan files from API
-const getAllPlanFilenames = async () => {
+const getAllPlanFilenames = async (): Promise<string[]> => {
   try {
     const response = await fetch('/api/plan-files')
     const data = await response.json()
@@ -32,7 +44,7 @@ const getAllPlanFilenames = async () => {
 }
 
 // Simple filtering - just by plan number
-const filterPlans = (allPlans, searchTerm) => {
+const filterPlans = (allPlans: Plan[], searchTerm: string): Plan[] => {
   if (!searchTerm || !searchTerm.trim()) return allPlans
   
   return allPlans.filter(plan => 
@@ -41,33 +53,27 @@ const filterPlans = (allPlans, searchTerm) => {
 }
 
 // Simple sorting - alphabetical by plan number
-const sortPlans = (plans) => {
+const sortPlans = (plans: Plan[]): Plan[] => {
   return [...plans].sort((a, b) => a.plan_number.localeCompare(b.plan_number))
 }
 
-const houseTypes = [
-  { id: 1, type_name: 'Bungalow' },
-  { id: 2, type_name: 'Two Story' },
-  { id: 3, type_name: 'Split Level' },
-  { id: 4, type_name: 'Ranch' },
-]
 
 export default function Plans() {
-  const [plans, setPlans] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
-  const [totalPlans, setTotalPlans] = useState(0)
-  const [currentPage, setCurrentPage] = useState(1)
-  const [totalPages, setTotalPages] = useState(0)
-  const [viewMode, setViewMode] = useState('grid')
-  const [selectedPlan, setSelectedPlan] = useState(null)
-  const [searchTerm, setSearchTerm] = useState('')
+  const [plans, setPlans] = useState<Plan[]>([])
+  const [loading, setLoading] = useState<boolean>(true)
+  const [error, setError] = useState<string | null>(null)
+  const [totalPlans, setTotalPlans] = useState<number>(0)
+  const [currentPage, setCurrentPage] = useState<number>(1)
+  const [totalPages, setTotalPages] = useState<number>(0)
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
+  const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null)
+  const [searchTerm, setSearchTerm] = useState<string>('')
   
   // Zoom functionality state
-  const [zoom, setZoom] = useState(1)
-  const [pan, setPan] = useState({ x: 0, y: 0 })
-  const [isDragging, setIsDragging] = useState(false)
-  const [dragStart, setDragStart] = useState({ x: 0, y: 0 })
+  const [zoom, setZoom] = useState<number>(1)
+  const [pan, setPan] = useState<PanPosition>({ x: 0, y: 0 })
+  const [isDragging, setIsDragging] = useState<boolean>(false)
+  const [dragStart, setDragStart] = useState<PanPosition>({ x: 0, y: 0 })
   
   const perPage = 20
 
@@ -101,27 +107,28 @@ export default function Plans() {
       
       // Calculate pagination
       const totalFilteredPlans = sortedPlans.length
-      const totalPages = Math.ceil(totalFilteredPlans / perPage)
+      const calculatedTotalPages = Math.ceil(totalFilteredPlans / perPage)
       const startIndex = (currentPage - 1) * perPage
       const endIndex = startIndex + perPage
       const paginatedPlans = sortedPlans.slice(startIndex, endIndex)
       
       setPlans(paginatedPlans)
       setTotalPlans(totalFilteredPlans)
-      setTotalPages(totalPages)
+      setTotalPages(calculatedTotalPages)
       
       // Small delay for better UX
       await new Promise(resolve => setTimeout(resolve, 200))
       
     } catch (err) {
-      setError(`Failed to load house plans: ${err.message}`)
+      const errorMessage = err instanceof Error ? err.message : 'Unknown error occurred'
+      setError(`Failed to load house plans: ${errorMessage}`)
       console.error('Error loading plans:', err)
     } finally {
       setLoading(false)
     }
   }
 
-  const handleSearch = (value) => {
+  const handleSearch = (value: string) => {
     setSearchTerm(value)
     setCurrentPage(1) // Reset to first page when searching
   }
@@ -131,7 +138,7 @@ export default function Plans() {
     setCurrentPage(1)
   }
 
-  const handlePageChange = (newPage) => {
+  const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -150,7 +157,7 @@ export default function Plans() {
     setZoom(prev => Math.max(prev - 0.25, 0.25)) // Min zoom 0.25x
   }
 
-  const handleMouseDown = (e) => {
+  const handleMouseDown = (e: React.MouseEvent) => {
     e.preventDefault()
     if (zoom > 1) {
       setIsDragging(true)
@@ -161,7 +168,7 @@ export default function Plans() {
     }
   }
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (e: MouseEvent) => {
     if (isDragging && zoom > 1) {
       e.preventDefault()
       setPan({
@@ -171,12 +178,12 @@ export default function Plans() {
     }
   }
 
-  const handleMouseUp = (e) => {
+  const handleMouseUp = (e: MouseEvent) => {
     e.preventDefault()
     setIsDragging(false)
   }
 
-  const handleWheel = (e) => {
+  const handleWheel = (e: React.WheelEvent) => {
     e.preventDefault()
     e.stopPropagation()
     
@@ -209,28 +216,17 @@ export default function Plans() {
 
   // Add event listeners for mouse events
   useEffect(() => {
-    if (selectedPlan && isDragging) {
-      const handleGlobalMouseMove = (e) => handleMouseMove(e)
-      const handleGlobalMouseUp = (e) => handleMouseUp(e)
-      
-      document.addEventListener('mousemove', handleGlobalMouseMove)
-      document.addEventListener('mouseup', handleGlobalMouseUp)
+    if (isDragging) {
+      document.addEventListener('mousemove', handleMouseMove)
+      document.addEventListener('mouseup', handleMouseUp)
       
       return () => {
-        document.removeEventListener('mousemove', handleGlobalMouseMove)
-        document.removeEventListener('mouseup', handleGlobalMouseUp)
+        document.removeEventListener('mousemove', handleMouseMove)
+        document.removeEventListener('mouseup', handleMouseUp)
       }
     }
-  }, [isDragging, dragStart, selectedPlan, zoom])
+  }, [isDragging])
 
-  const getGarageText = (garage) => {
-    switch(garage) {
-      case 1: return 'Single'
-      case 2: return 'Double'
-      case 3: return 'Triple'
-      default: return 'No'
-    }
-  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -261,7 +257,7 @@ export default function Plans() {
             </h1>
             
             <p className="text-lg sm:text-xl lg:text-2xl mb-8 text-gray-200 leading-relaxed font-light max-w-4xl mx-auto">
-              Pick from over 850 different house plans and we can customize it for you.
+              Pick from over 1200+ different house plans and we can customize it for you.
             </p>
             
             <button 
@@ -378,9 +374,10 @@ export default function Plans() {
                       alt={`Plan ${plan.plan_number}`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"
-                      onError={(e) => {
+                      onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
                         // Fallback if image doesn't exist
-                        e.target.src = '/placeholder-plan.jpg'
+                        const target = e.target as HTMLImageElement
+                        target.src = '/placeholder-plan.jpg'
                       }}
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
@@ -563,9 +560,10 @@ export default function Plans() {
                     height: 'auto'
                   }}
                   draggable={false}
-                  onLoad={(e) => {
+                  onLoad={(e: React.SyntheticEvent<HTMLImageElement>) => {
                     // Ensure image is properly centered when loaded
-                    console.log('Image loaded:', e.target.naturalWidth, 'x', e.target.naturalHeight)
+                    const target = e.target as HTMLImageElement
+                    console.log('Image loaded:', target.naturalWidth, 'x', target.naturalHeight)
                   }}
                 />
               </div>
@@ -573,9 +571,9 @@ export default function Plans() {
               {/* Zoom Instructions Overlay */}
               <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/80 text-white px-6 py-3 rounded-xl text-sm font-medium shadow-lg">
                 {zoom === 1 ? (
-                  <>🔍 Scroll to zoom • Click and drag when zoomed</>
+                  <span>🔍 Scroll to zoom • Click and drag when zoomed</span>
                 ) : (
-                  <>🖱️ Drag to move • Scroll to zoom • Click reset to center</>
+                  <span>🖱️ Drag to move • Scroll to zoom • Click reset to center</span>
                 )}
               </div>
               
@@ -607,7 +605,7 @@ export default function Plans() {
           </h2>
           
           <p className="text-xl text-gray-600 mb-12 leading-relaxed">
-            Let's bring your dream home to life. Contact us to discuss customization options and get started.
+            Let&apos;s bring your dream home to life. Contact us to discuss customization options and get started.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
