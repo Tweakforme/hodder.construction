@@ -36,7 +36,7 @@ export async function GET() {
     return NextResponse.json(
       { 
         error: 'Failed to read plan files',
-        details: error.message,
+        details: error instanceof Error ? error.message : String(error),
         files: [] 
       },
       { status: 500 }

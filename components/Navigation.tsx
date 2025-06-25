@@ -37,21 +37,22 @@ export default function Navigation() {
 
   const navigationItems: NavigationSection[] = [
     {
-      title: 'For Sale',
+      title: 'Commercial',
       key: 'sale',
       color: 'amber',
       items: [
-        { title: 'New Homes For Sale', href: '/sales', desc: 'Discover your dream home' },
-        { title: 'Mortgage Calculator', href: '/mortgage', desc: 'Calculate your payments' },
-        { title: 'Property Transfer Tax', href: '/ptt', desc: 'Tax calculations' }
+        { title: 'Commercial Sales', href: '/sales', desc: 'Build Your Project' },
       ]
     },
     {
-      title: 'For Rent',
+      title: 'Residential',
       key: 'rent',
       color: 'emerald',
       items: [
-        { title: 'Rental Properties', href: 'https://rentalskamloops.ca', desc: 'Redirects to rentalskamloops.ca', external: true }
+        { title: 'Build Your Home', href: '/residential', desc: 'Build Your Dream Home' },
+         { title: 'Mortgage Calculator', href: '/mortgage', desc: 'Calculate your payments' },
+        { title: 'Property Transfer Tax', href: '/ptt', desc: 'Tax calculations' },
+         { title: 'Rental Properties', href: 'https://rentalskamloops.ca', desc: 'Redirects to rentalskamloops.ca', external: true }
       ]
     },
     {
@@ -292,16 +293,8 @@ export default function Navigation() {
                     : 'translate-y-2 scale-100'
                 }`} />
               </div>
-              
-              {/* Floating Particles Effect */}
-              <div className={`absolute inset-0 transition-all duration-1000 ${
-                isMobileMenuOpen ? 'opacity-100' : 'opacity-0'
-              }`}>
-                <div className="absolute top-1 left-1 w-1 h-1 bg-white/60 rounded-full animate-ping" style={{animationDelay: '0ms'}} />
-                <div className="absolute top-2 right-1 w-1 h-1 bg-white/60 rounded-full animate-ping" style={{animationDelay: '200ms'}} />
-                <div className="absolute bottom-1 left-2 w-1 h-1 bg-white/60 rounded-full animate-ping" style={{animationDelay: '400ms'}} />
-                <div className="absolute bottom-2 right-1 w-1 h-1 bg-white/60 rounded-full animate-ping" style={{animationDelay: '600ms'}} />
-              </div>
+
+           
             </button>
           </div>
         </div>

@@ -202,8 +202,194 @@ export const projects: Project[] = [
   value: "Confidential",
   imageCount: 63,
   folder: "heffley-creek-residence"
-}
-  // Add your other 15 projects here - just copy this format
+}, 
+
+
+{
+  id: 6,
+  title: "Petro-Canada Dallas Station", 
+  category: "commercial",
+  status: "completed",
+  year: "2022", // Update with actual year
+  location: "5150 Dallas Dr, Kamloops, BC",
+  description: "Complete gas station and convenience store construction at 5150 Dallas Drive. This modern facility serves the growing Dallas area with fuel services, convenience shopping, and automotive amenities.",
+  fullDescription: "Complete construction of a modern Petro-Canada gas station and convenience store facility at 5150 Dallas Drive in Kamloops. This comprehensive project involved building a full-service fuel station with multiple pump islands, a spacious convenience store, car wash facilities, and all associated infrastructure. The location strategically serves the growing Dallas area of Kamloops with 24/7 fuel services, convenience shopping, and automotive services including restrooms, air pumps, and ATM services.",
+  features: [
+    "Multi-pump fuel station with covered canopy",
+    "Full convenience store with extensive product selection",
+    "Modern car wash facilities",
+    "24/7 accessible fuel services",
+    "Customer restrooms and facilities", 
+    "Air pump stations for tire service",
+    "ATM and payment processing systems",
+    "Petro-Points loyalty program integration",
+    "Wheelchair accessible design throughout",
+    "Commercial-grade fuel storage and safety systems",
+    "Professional signage and exterior lighting",
+    "Ample customer parking and easy traffic flow"
+  ],
+  specifications: {
+    "Property Type": "Gas Station & Convenience Store",
+    "Project Type": "New Commercial Construction",
+    "Location": "Dallas Drive, Kamloops",
+    "Construction Type": "Fuel Retail Facility",
+    "Operating Hours": "6:00 AM - 11:00 PM Daily",
+    "Special Features": "Car Wash, Multi-Service Fuel Station"
+  },
+  tags: ["Commercial", "Gas Station", "New Build", "Petro-Canada", "Dallas", "Convenience Store"],
+  value: "Confidential", 
+  imageCount: 4,
+  folder: "petro-canada-dallas"
+},
+
+{
+  id: 7,
+  title: "CBS Parts - Kamloops Locations",
+  category: "commercial", 
+  status: "completed",
+  year: "2023", // Update with actual year
+  location: "575 Athabasca St W & 657 Sarcee St W, Kamloops, BC",
+  description: "Renovated facilities for this heavy-duty truck parts supplier founded in 1983. Completed work at both their original 657 Sarcee St W location and their new expanded 575 Athabasca St W facility.",
+  fullDescription: "Comprehensive renovation project for CBS Parts, British Columbia's leading independent supplier of heavy-duty truck and trailer aftermarket parts. This project involved renovating their original Sarcee Street location and constructing their new expanded facility on Athabasca Street. CBS Parts serves the transportation, logging, mining, construction, and emergency services industries across Western Canada. The new location features over 7,500 square feet of showroom space and maintains over $10 million in inventory to serve fleets, repair shops, and end users throughout the province.",
+  features: [
+    "7,500+ sqft showroom space at new location",
+    "Heavy-duty parts storage and warehouse systems",
+    "Professional customer service areas",
+    "Inventory management and tracking systems",
+    "Loading dock facilities for delivery trucks",
+    "Specialized storage for hydraulic and pneumatic components", 
+    "Professional parts cataloging and display systems",
+    "Customer parking and accessibility features",
+    "Office spaces for sales and administration",
+    "Secure storage for high-value truck components",
+    "Climate-controlled environment for sensitive parts",
+    "Multi-location coordination and operations"
+  ],
+  specifications: {
+    "Property Type": "Industrial Parts Supply Facility", 
+    "Project Type": "Commercial Renovation & Expansion",
+    "Locations": "575 Athabasca St W (New) & 657 Sarcee St W (Original)",
+    "Construction Type": "Industrial/Warehouse Renovation",
+    "Business Founded": "1983",
+    "Service Area": "British Columbia & Western Canada"
+  },
+  tags: ["Commercial", "Industrial", "Renovation", "Heavy Duty Parts", "Transportation", "Warehouse"],
+  value: "Confidential",
+  imageCount: 21, 
+  folder: "cbs-parts-kamloops"
+},
+
+{
+  id: 8,
+  title: "BC Fasteners & Tools",
+  category: "commercial",
+  status: "completed", 
+  year: "2024", // Update with actual year
+  location: "425 Mt Paul Way, Kamloops, BC",
+  description: "Renovation of their new location at 425 Mt Paul Way. This 100% Canadian-owned supplier has been serving the Thompson-Okanagan since 1991 with industrial and construction supplies.",
+  fullDescription: "Complete renovation and build-out of BC Fasteners & Tools' new Kamloops location at 425 Mt Paul Way. This project created a modern retail and warehouse facility for this 100% Canadian-owned company that has been serving the Thompson-Okanagan region since 1991. The new location provides improved accessibility and parking compared to their previous Dalhousie Drive location, while maintaining their extensive inventory of fasteners, power tools, hand tools, safety supplies, and industrial equipment for construction, manufacturing, and industrial companies throughout the region.",
+  features: [
+    "Modern retail showroom for tool and fastener display",
+    "Extensive warehouse storage systems",
+    "Professional customer service and sales areas", 
+    "Loading and receiving facilities",
+    "Inventory management and cataloging systems",
+    "Power tool demonstration and testing areas",
+    "Safety equipment display and fitting areas",
+    "Improved customer parking and accessibility",
+    "Administrative offices and customer consultation spaces",
+    "Secure storage for high-value equipment",
+    "Climate-controlled environment for sensitive materials",
+    "Easy highway access for commercial customers"
+  ],
+  specifications: {
+    "Property Type": "Industrial Supply Retail Facility",
+    "Project Type": "Commercial Renovation & Relocation", 
+    "Location": "Mt Paul Way Industrial Area",
+    "Construction Type": "Retail/Warehouse Renovation",
+    "Business Founded": "1991",
+    "Service Area": "Thompson-Okanagan Region"
+  },
+  tags: ["Commercial", "Industrial Supply", "Renovation", "Tools", "Fasteners", "Canadian Owned"],
+  value: "Confidential",
+  imageCount: 0,
+  folder: "bc-fasteners-kamloops"
+},
+
+{
+  id: 9,
+  title: "Erwin's Fine Baking & Deli", 
+  category: "commercial",
+  status: "completed",
+  year: "2023", // Update with actual year  
+  location: "419 Mt Paul Way, Kamloops, BC",
+  description: "Renovation of this beloved European-style bakery that has maintained a tradition of excellence since 1972. Enhanced production facilities while preserving the authentic character of this Kamloops institution.",
+  fullDescription: "Comprehensive renovation of Erwin's Fine Baking & Delicatessen, a beloved Kamloops institution that has been serving the community since 1972. This project involved relocating and renovating their facility at 419 Mt Paul Way, enhancing their production capabilities while preserving the authentic European bakery atmosphere that customers have come to love. The renovation included modern baking equipment, expanded retail space, improved customer seating, and enhanced food preparation areas while maintaining their commitment to traditional European baking methods and time-honoured recipes.",
+  features: [
+    "Modern commercial baking ovens and equipment",
+    "Expanded retail bakery display cases",
+    "Enhanced customer seating and dining area",
+    "Professional deli and sandwich preparation areas",
+    "Climate-controlled storage for ingredients and finished goods",
+    "Improved customer accessibility and parking",
+    "Traditional European bakery atmosphere preservation",
+    "Fresh bread production and display systems",
+    "Take-home meal preparation and packaging areas",
+    "Professional cake decorating and custom order facilities",
+    "Improved workflow for Red Seal certified bakers",
+    "Enhanced food safety and sanitation systems"
+  ],
+  specifications: {
+    "Property Type": "Commercial Bakery & Delicatessen",
+    "Project Type": "Commercial Renovation & Relocation",
+    "Location": "Mt Paul Way, Kamloops", 
+    "Construction Type": "Food Service Renovation",
+    "Business Founded": "1972",
+    "Speciality": "European-style Traditional Baking"
+  },
+  tags: ["Commercial", "Bakery", "Renovation", "Food Service", "European", "Traditional", "Local Institution"],
+  value: "Confidential",
+  imageCount: 3,
+  folder: "erwins-bakery-kamloops"
+},
+
+{
+  id: 10,
+  title: "Tumbleweed's Liquor Store",
+  category: "commercial",
+  status: "completed", 
+  year: "2023", // Update with actual year
+  location: "Downtown Kamloops, BC",
+  description: "New downtown location for this family-owned business that takes great pride in providing the best customer service, prices and liquor selection in Kamloops, featuring a spectacular wine cellar and premium scotch selection.",
+  fullDescription: "Complete commercial build-out for Tumbleweed's Liquor Store's new downtown Kamloops location. This project showcased our expertise in retail construction, featuring custom wine storage solutions, premium display areas, and modern point-of-sale infrastructure. The design maximizes product visibility while creating an inviting shopping environment for this beloved local business that has been serving the Kamloops community with the finest selection of wines, spirits, and craft beers.",
+  features: [
+    "Complete retail build-out from ground up",
+    "Custom wine cellar construction with climate control", 
+    "Premium product display systems and shelving",
+    "Modern refrigeration systems for beer and wine",
+    "Professional LED lighting design for optimal product showcase",
+    "Secure storage areas and inventory management systems",
+    "Accessible customer entrance and wide aisles",
+    "Commercial-grade flooring with slip-resistant surfaces",
+    "Modern point-of-sale infrastructure and customer service area",
+    "Family-owned business atmosphere preservation"
+  ],
+  specifications: {
+    "Property Type": "Retail Liquor Store",
+    "Project Type": "New Commercial Build-out",
+    "Location": "Downtown Kamloops",
+    "Construction Type": "Retail Construction",
+    "Special Features": "Wine Cellar, Premium Display Systems",
+    "Business Focus": "Family-owned specialty liquor retail"
+  },
+  tags: ["Commercial", "Retail", "Liquor Store", "Downtown", "New Build", "Family Business"],
+  value: "Confidential",
+  imageCount: 1,
+  folder: "tumbleweeds-liquor"
+},
+
+
+
 ]
 
 // Helper functions to automatically generate what we need

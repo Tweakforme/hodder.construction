@@ -70,15 +70,10 @@ export default function Footer() {
                       <ArrowRight className="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" />
                       <span className="text-sm sm:text-base">Homes for Sale</span>
                     </Link>
-                 <a 
-  href="https://rentalskamloops.ca" 
-  target="_blank" 
-  rel="noopener noreferrer"
-  className="group flex items-center text-gray-300 hover:text-amber-400 transition-colors"
->
-  <ArrowRight className="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" />
-  <span className="text-sm sm:text-base">Rental Properties</span>
-</a>
+                    <Link href="/rentals" className="group flex items-center text-gray-300 hover:text-amber-400 transition-colors">
+                      <ArrowRight className="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" />
+                      <span className="text-sm sm:text-base">Rental Properties</span>
+                    </Link>
                     <Link href="/projects" className="group flex items-center text-gray-300 hover:text-amber-400 transition-colors">
                       <ArrowRight className="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" />
                       <span className="text-sm sm:text-base">Our Projects</span>
@@ -209,7 +204,7 @@ export default function Footer() {
             <div className="flex items-center space-x-4">
               <Award className="h-5 w-5 text-amber-400" />
               <p className="text-gray-400 text-sm">
-                Licensed & Insured
+                Licensed & Insured • Kamloops Chamber of Commerce Member
               </p>
             </div>
             
