@@ -16,7 +16,6 @@ interface NavigationItem {
 interface NavigationSection {
   title: string
   key: string
-  color: string
   items: NavigationItem[]
 }
 
@@ -35,112 +34,78 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const navigationItems: NavigationSection[] = [
+const navigationItems: NavigationSection[] = [
     {
       title: 'Commercial',
-      key: 'sale',
-      color: 'amber',
+      key: 'commercial',
       items: [
-        { title: 'Commercial Sales', href: '/sales', desc: 'Build Your Project' },
+        { title: 'Commercial Construction', href: '/commercial', desc: 'Tenant improvements & builds' },
       ]
     },
     {
       title: 'Residential',
-      key: 'rent',
-      color: 'emerald',
+      key: 'residential',
       items: [
-        { title: 'Build Your Home', href: '/residential', desc: 'Build Your Dream Home' },
-         { title: 'Mortgage Calculator', href: '/mortgage', desc: 'Calculate your payments' },
+        { title: 'Custom Homes', href: '/residential', desc: 'Build your dream home' },
+        { title: 'Mortgage Calculator', href: '/mortgage', desc: 'Calculate your payments' },
         { title: 'Property Transfer Tax', href: '/ptt', desc: 'Tax calculations' },
-         { title: 'Rental Properties', href: 'https://rentalskamloops.ca', desc: 'Redirects to rentalskamloops.ca', external: true }
+        { title: 'Rental Properties', href: 'https://rentalskamloops.ca', desc: 'Available rental units', external: true }
       ]
     },
     {
       title: 'Projects & Plans',
       key: 'projects',
-      color: 'blue',
       items: [
-        { title: 'Current & Past Projects', href: '/projects', desc: 'See our craftsmanship' },
-        { title: 'Find House Plans', href: '/plans', desc: 'Browse floor plans' }
+        { title: 'Our Portfolio', href: '/projects', desc: 'Completed projects showcase' },
+        { title: 'House Plans', href: '/plans', desc: 'Browse floor plans' }
       ]
     },
     {
-      title: 'About Us',
+      title: 'About',
       key: 'about',
-      color: 'violet',
       items: [
-        { title: 'Who We Are', href: '/about', desc: 'Our story' },
-        { title: 'Join Us', href: '/about#joinus', desc: 'Career opportunities' }
+        { title: 'Our Company', href: '/about', desc: 'Our story & values' },
+        { title: 'Careers', href: '/about#joinus', desc: 'Join our team' }
       ]
     }
   ]
 
-  const getColorClasses = (color: string) => {
-    const colors = {
-      amber: 'from-amber-500/10 to-orange-500/10',
-      emerald: 'from-emerald-500/10 to-teal-500/10',
-      blue: 'from-blue-500/10 to-indigo-500/10',
-      violet: 'from-violet-500/10 to-purple-500/10'
-    }
-    return colors[color as keyof typeof colors] || colors.amber
-  }
-
-  const getDotColor = (color: string) => {
-    const colors = {
-      amber: 'bg-amber-400',
-      emerald: 'bg-emerald-400',
-      blue: 'bg-blue-400',
-      violet: 'bg-violet-400'
-    }
-    return colors[color as keyof typeof colors] || colors.amber
-  }
-
-  const getHoverColor = (color: string) => {
-    const colors = {
-      amber: 'hover:text-amber-500',
-      emerald: 'hover:text-emerald-500',
-      blue: 'hover:text-blue-500',
-      violet: 'hover:text-violet-500'
-    }
-    return colors[color as keyof typeof colors] || colors.amber
-  }
-
   return (
     <>
       {/* Desktop Navigation */}
-      <nav className={`hidden lg:block fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      <nav className={`hidden lg:block fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'py-2 bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-200/50' 
+          ? 'py-3 bg-white/95 backdrop-blur-xl shadow-lg border-b border-stone-200/30' 
           : 'py-4 bg-transparent'
       }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-center justify-between">
             
-            {/* Logo - Always Visible */}
-            <Link href="/" className="flex items-center space-x-3 group min-w-0 flex-1">
-              <div className={`relative overflow-hidden rounded-xl transition-all duration-300 group-hover:scale-110 flex-shrink-0 ${
-                isScrolled ? 'w-10 h-10 bg-gray-100' : 'w-12 h-12 bg-white/10 backdrop-blur-sm'
+            {/* Logo */}
+            <Link href="/" className="flex items-center space-x-3 group">
+              <div className={`relative overflow-hidden rounded-lg transition-all duration-300 group-hover:scale-105 ${
+                isScrolled ? 'w-10 h-10 bg-stone-50 shadow-sm' : 'w-12 h-12 bg-white/10 backdrop-blur-sm shadow-lg'
               }`}>
                 <Image
                   src="/logo.png"
-                  alt="Hodder Construction Logo"
+                  alt="Hodder Construction"
                   width={48}
                   height={48}
                   className="w-full h-full object-contain p-1"
                 />
               </div>
-              <div className="min-w-0">
-                <div className={`font-bold transition-colors duration-300 ${
-                  isScrolled ? 'text-gray-900' : 'text-white'
+              <div>
+                <div className={`font-bold tracking-tight transition-colors duration-300 ${
+                  isScrolled ? 'text-stone-900' : 'text-white'
                 } group-hover:text-amber-500`}>
-                  <span className="text-base md:text-lg lg:text-xl">HODDER CONSTRUCTION</span>
-                  <span className="text-sm md:text-base lg:text-lg"> LTD.</span>
+                  <span className="text-xl">HODDER CONSTRUCTION</span>
+                  <span className="text-xl font-medium"> LTD.</span>
                 </div>
               </div>
             </Link>
 
             {/* Navigation Items */}
-            <div className="flex items-center space-x-1 flex-shrink-0">
+            <div className="flex items-center space-x-1">
               {navigationItems.map((item) => (
                 <div
                   key={item.key}
@@ -148,14 +113,14 @@ export default function Navigation() {
                   onMouseEnter={() => setActiveDropdown(item.key)}
                   onMouseLeave={() => setActiveDropdown(null)}
                 >
-                  <button className={`flex items-center px-4 py-2 rounded-lg font-medium transition-all duration-300 group ${
+                  <button className={`flex items-center px-4 py-2.5 rounded-xl font-medium text-base tracking-wide transition-all duration-300 ${
                     isScrolled 
-                      ? 'text-gray-700 hover:text-amber-600 hover:bg-gray-50' 
+                      ? 'text-stone-700 hover:text-amber-500 hover:bg-amber-50/50' 
                       : 'text-white/90 hover:text-white hover:bg-white/10'
                   }`}>
                     <span className="relative">
                       {item.title}
-                      <span className={`absolute bottom-0 left-0 h-0.5 bg-amber-400 transition-all duration-300 ${
+                      <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-amber-400 to-orange-500 transition-all duration-300 ${
                         activeDropdown === item.key ? 'w-full' : 'w-0'
                       }`} />
                     </span>
@@ -164,15 +129,14 @@ export default function Navigation() {
                     }`} />
                   </button>
 
-                  {/* Compact Dropdown */}
+                  {/* Elegant Dropdown */}
                   <div className={`absolute top-full left-1/2 transform -translate-x-1/2 pt-2 transition-all duration-300 ${
                     activeDropdown === item.key
                       ? 'opacity-100 visible translate-y-0'
                       : 'opacity-0 invisible -translate-y-2 pointer-events-none'
                   }`}>
-                    <div className="w-64 bg-white/95 backdrop-blur-xl rounded-xl shadow-xl border border-gray-200/20 overflow-hidden">
-                      <div className={`absolute inset-0 bg-gradient-to-br ${getColorClasses(item.color)}`} />
-                      <div className="relative p-3 space-y-1">
+                    <div className="w-72 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-stone-200/30 overflow-hidden">
+                      <div className="p-4 space-y-1">
                         {item.items.map((subItem, index) => (
                           subItem.external ? (
                             <a
@@ -180,28 +144,26 @@ export default function Navigation() {
                               href={subItem.href}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="group/item flex items-center p-2 rounded-lg hover:bg-white/50 transition-all duration-300"
+                              className="group flex items-start p-3 rounded-xl hover:bg-stone-50/80 transition-all duration-300"
                             >
-                              <div className={`w-1.5 h-1.5 ${getDotColor(item.color)} rounded-full mr-3 group-hover/item:scale-125 transition-transform`} />
-                              <div>
-                                <div className="font-medium text-gray-900 text-sm group-hover/item:text-amber-600 transition-colors">
+                              <div className="flex-1">
+                                <div className="font-semibold text-stone-900 text-sm group-hover:text-amber-500 transition-colors">
                                   {subItem.title}
                                 </div>
-                                <div className="text-xs text-gray-600">{subItem.desc}</div>
+                                <div className="text-xs text-stone-600 leading-relaxed mt-0.5">{subItem.desc}</div>
                               </div>
                             </a>
                           ) : (
                             <Link
                               key={index}
                               href={subItem.href}
-                              className="group/item flex items-center p-2 rounded-lg hover:bg-white/50 transition-all duration-300"
+                              className="group flex items-start p-3 rounded-xl hover:bg-stone-50/80 transition-all duration-300"
                             >
-                              <div className={`w-1.5 h-1.5 ${getDotColor(item.color)} rounded-full mr-3 group-hover/item:scale-125 transition-transform`} />
-                              <div>
-                                <div className="font-medium text-gray-900 text-sm group-hover/item:text-amber-600 transition-colors">
+                              <div className="flex-1">
+                                <div className="font-semibold text-stone-900 text-sm group-hover:text-amber-500 transition-colors">
                                   {subItem.title}
                                 </div>
-                                <div className="text-xs text-gray-600">{subItem.desc}</div>
+                                <div className="text-xs text-stone-600 leading-relaxed mt-0.5">{subItem.desc}</div>
                               </div>
                             </Link>
                           )
@@ -217,157 +179,139 @@ export default function Navigation() {
       </nav>
 
       {/* Mobile Navigation */}
-      <nav className={`lg:hidden fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      <nav className={`lg:hidden fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-white/95 backdrop-blur-xl shadow-lg' 
+          ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-stone-200/30' 
           : 'bg-transparent'
       }`}>
         <div className="px-4 py-3">
           <div className="flex items-center justify-between">
             
-            {/* Mobile Logo - Always Visible */}
-            <Link href="/" className="flex items-center space-x-2 group min-w-0 flex-1">
-              <div className={`relative overflow-hidden rounded-xl transition-all duration-300 group-hover:scale-110 flex-shrink-0 ${
-                isScrolled ? 'w-8 h-8 bg-gray-100' : 'w-9 h-9 bg-white/10 backdrop-blur-sm'
+            {/* Mobile Logo */}
+            <Link href="/" className="flex items-center space-x-2.5 group">
+              <div className={`relative overflow-hidden rounded-lg transition-all duration-300 group-hover:scale-105 ${
+                isScrolled ? 'w-9 h-9 bg-stone-50 shadow-sm' : 'w-10 h-10 bg-white/10 backdrop-blur-sm shadow-lg'
               }`}>
                 <Image
                   src="/logo.png"
-                  alt="Hodder Construction Logo"
-                  width={36}
-                  height={36}
-                  className="w-full h-full object-contain p-0.5"
+                  alt="Hodder Construction"
+                  width={40}
+                  height={40}
+                  className="w-full h-full object-contain p-1"
                 />
               </div>
-              <div className="min-w-0">
-                <div className={`font-bold transition-colors duration-300 leading-tight ${
-                  isScrolled ? 'text-gray-900' : 'text-white'
+              <div>
+                <div className={`font-bold transition-colors duration-300 ${
+                  isScrolled ? 'text-stone-900' : 'text-white'
                 } group-hover:text-amber-500`}>
-                  <div className="text-xs sm:text-sm">HODDER CONSTRUCTION</div>
-                  <div className="text-xs text-amber-400 -mt-0.5">LTD.</div>
+                  <div className="text-sm leading-tight">HODDER CONSTRUCTION</div>
+                  <div className="text-xs text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500 -mt-0.5">LTD.</div>
                 </div>
               </div>
             </Link>
 
-            {/* Spectacular Mobile Menu Button */}
+            {/* Sophisticated Mobile Menu Button */}
             <button
               onClick={() => {
                 setIsMobileMenuOpen(!isMobileMenuOpen)
                 setMobileSubmenu(null)
               }}
-              className={`relative w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 transform ${
+              className={`relative w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 ${
                 isScrolled 
-                  ? 'text-gray-700 hover:bg-gray-100 shadow-lg' 
-                  : 'text-white hover:bg-white/20 shadow-xl'
-              } ${isMobileMenuOpen ? 'scale-110 rotate-180' : 'scale-100 rotate-0'} hover:scale-105`}
+                  ? 'text-stone-700 hover:bg-stone-50 shadow-sm border border-stone-200/30' 
+                  : 'text-white hover:bg-white/10 shadow-lg backdrop-blur-sm'
+              } ${isMobileMenuOpen ? 'scale-95 rotate-180' : 'scale-100 rotate-0'}`}
             >
-              {/* Animated Background Circle */}
-              <div className={`absolute inset-0 rounded-2xl transition-all duration-500 ${
-                isMobileMenuOpen 
-                  ? 'bg-gradient-to-br from-amber-400 to-orange-500 scale-110' 
-                  : 'bg-transparent scale-100'
-              }`} />
-              
-              {/* Hamburger Lines with Spectacular Animation */}
-              <div className="relative w-7 h-7 flex items-center justify-center">
-                <span className={`absolute w-6 h-0.5 rounded-full transition-all duration-500 ease-out transform ${
-                  isScrolled && !isMobileMenuOpen ? 'bg-gray-700' : 'bg-white'
+              <div className="relative w-6 h-6 flex items-center justify-center">
+                <div className={`absolute w-5 h-0.5 rounded-full transition-all duration-500 ease-out transform ${
+                  isScrolled && !isMobileMenuOpen ? 'bg-stone-700' : 'bg-white'
                 } ${
                   isMobileMenuOpen 
-                    ? 'rotate-45 translate-y-0 scale-110 w-7' 
-                    : '-translate-y-2 scale-100'
+                    ? 'rotate-45 translate-y-0 scale-110 w-6' 
+                    : '-translate-y-1.5 scale-100'
                 }`} />
                 
-                <span className={`absolute w-6 h-0.5 rounded-full transition-all duration-300 ease-out ${
-                  isScrolled && !isMobileMenuOpen ? 'bg-gray-700' : 'bg-white'
+                <div className={`absolute w-5 h-0.5 rounded-full transition-all duration-300 ease-out ${
+                  isScrolled && !isMobileMenuOpen ? 'bg-stone-700' : 'bg-white'
                 } ${
                   isMobileMenuOpen 
                     ? 'opacity-0 scale-0 rotate-180' 
                     : 'opacity-100 scale-100 rotate-0'
                 }`} />
                 
-                <span className={`absolute w-6 h-0.5 rounded-full transition-all duration-500 ease-out transform ${
-                  isScrolled && !isMobileMenuOpen ? 'bg-gray-700' : 'bg-white'
+                <div className={`absolute w-5 h-0.5 rounded-full transition-all duration-500 ease-out transform ${
+                  isScrolled && !isMobileMenuOpen ? 'bg-stone-700' : 'bg-white'
                 } ${
                   isMobileMenuOpen 
-                    ? '-rotate-45 translate-y-0 scale-110 w-7' 
-                    : 'translate-y-2 scale-100'
+                    ? '-rotate-45 translate-y-0 scale-110 w-6' 
+                    : 'translate-y-1.5 scale-100'
                 }`} />
               </div>
-
-           
             </button>
           </div>
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* Sophisticated Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div className="lg:hidden fixed inset-0 z-40">
           
-          {/* Backdrop */}
+          {/* Elegant Backdrop */}
           <div 
-            className="absolute inset-0 bg-black/60 backdrop-blur-md"
+            className="absolute inset-0 bg-stone-900/60 backdrop-blur-sm"
             onClick={() => {
               setIsMobileMenuOpen(false)
               setMobileSubmenu(null)
             }}
           />
 
-          {/* Menu Container */}
-          <div className="absolute top-20 left-4 right-4">
+          {/* Professional Menu Container */}
+          <div className="absolute top-16 left-4 right-4 max-h-[calc(100vh-6rem)] overflow-y-auto">
             
-            {/* Main Menu */}
+            {/* Compact Main Menu */}
             {!mobileSubmenu && (
-              <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-200/50 overflow-hidden animate-slide-in">
-                <div className="p-6 space-y-3">
+              <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-stone-200/30 overflow-hidden animate-scale-in">
+                <div className="p-3 space-y-1">
                   {navigationItems.map((item, index) => (
                     <button
                       key={item.key}
-                      onClick={() => {
-                        console.log('Opening submenu:', item.key)
-                        setMobileSubmenu(item.key)
-                      }}
-                      className="w-full flex items-center justify-between p-4 rounded-2xl hover:bg-gray-50 active:bg-gray-100 transition-all duration-300 group"
+                      onClick={() => setMobileSubmenu(item.key)}
+                      className="w-full flex items-center justify-between p-3 rounded-xl hover:bg-stone-50/80 active:bg-stone-100 transition-all duration-300 group animate-fade-in-up"
                       style={{ animationDelay: `${index * 100}ms` }}
                     >
                       <div className="flex items-center">
-                        <div className={`w-3 h-3 ${getDotColor(item.color)} rounded-full mr-4 group-hover:scale-125 transition-transform duration-300`} />
-                        <span className="font-semibold text-gray-900 text-lg">{item.title}</span>
+                        <span className="font-semibold text-stone-900 text-base">{item.title}</span>
                       </div>
-                      <ChevronDown className="h-5 w-5 text-gray-400 -rotate-90 group-hover:translate-x-1 transition-all duration-300" />
+                      <ChevronDown className="h-4 w-4 text-stone-400 -rotate-90 group-hover:translate-x-1 transition-all duration-300" />
                     </button>
                   ))}
                 </div>
               </div>
             )}
 
-            {/* Submenu */}
+            {/* Compact Submenu */}
             {mobileSubmenu && (
-              <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-200/50 overflow-hidden animate-slide-in">
-                <div className={`absolute inset-0 bg-gradient-to-br ${
-                  getColorClasses(navigationItems.find(item => item.key === mobileSubmenu)?.color || 'amber')
-                }`} />
-                <div className="relative p-6">
+              <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-stone-200/30 overflow-hidden animate-scale-in">
+                <div className="p-4">
                   
-                  {/* Back Button */}
+                  {/* Compact Back Button */}
                   <button
                     onClick={() => setMobileSubmenu(null)}
-                    className="flex items-center mb-6 text-gray-600 hover:text-gray-900 transition-all duration-300 group"
+                    className="flex items-center mb-4 text-stone-600 hover:text-stone-900 transition-colors duration-300 group"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-white/50 flex items-center justify-center mr-3 group-hover:bg-white/70 transition-all duration-300">
-                      <ChevronDown className="h-5 w-5 rotate-90 group-hover:-translate-x-0.5 transition-transform duration-300" />
+                    <div className="w-8 h-8 rounded-lg bg-stone-50 border border-stone-200/50 flex items-center justify-center mr-2 group-hover:bg-stone-100 transition-colors">
+                      <ChevronDown className="h-3 w-3 rotate-90 group-hover:-translate-x-0.5 transition-transform duration-300" />
                     </div>
-                    <span className="font-semibold text-lg">Back to Menu</span>
+                    <span className="font-medium text-sm">Back to Menu</span>
                   </button>
 
-                  {/* Submenu Title */}
-                  <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-                    <div className={`w-5 h-5 ${getDotColor(navigationItems.find(item => item.key === mobileSubmenu)?.color || 'amber')} rounded-full mr-3`} />
+                  {/* Compact Submenu Title */}
+                  <h3 className="text-lg font-bold text-stone-900 mb-4 flex items-center">
                     {navigationItems.find(item => item.key === mobileSubmenu)?.title}
                   </h3>
 
-                  {/* Submenu Items */}
-                  <div className="space-y-3">
+                  {/* Compact Submenu Items */}
+                  <div className="space-y-1">
                     {navigationItems.find(item => item.key === mobileSubmenu)?.items.map((subItem, index) => (
                       subItem.external ? (
                         <a
@@ -375,33 +319,33 @@ export default function Navigation() {
                           href={subItem.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={`block p-5 rounded-2xl bg-white/30 hover:bg-white/50 transition-all duration-300 group ${getHoverColor(navigationItems.find(item => item.key === mobileSubmenu)?.color || 'amber')}`}
+                          className="block p-3 rounded-xl bg-stone-50/30 hover:bg-stone-50 border border-stone-200/30 hover:border-stone-200/50 transition-all duration-300 group animate-fade-in-up"
                           onClick={() => {
                             setIsMobileMenuOpen(false)
                             setMobileSubmenu(null)
                           }}
                           style={{ animationDelay: `${index * 100}ms` }}
                         >
-                          <div className="font-semibold text-gray-900 group-hover:text-current transition-colors text-lg mb-1">
+                          <div className="font-semibold text-stone-900 group-hover:text-amber-500 transition-colors text-base mb-0.5">
                             {subItem.title}
                           </div>
-                          <div className="text-sm text-gray-600 leading-relaxed">{subItem.desc}</div>
+                          <div className="text-xs text-stone-600 leading-relaxed">{subItem.desc}</div>
                         </a>
                       ) : (
                         <Link
                           key={index}
                           href={subItem.href}
-                          className={`block p-5 rounded-2xl bg-white/30 hover:bg-white/50 transition-all duration-300 group ${getHoverColor(navigationItems.find(item => item.key === mobileSubmenu)?.color || 'amber')}`}
+                          className="block p-3 rounded-xl bg-stone-50/30 hover:bg-stone-50 border border-stone-200/30 hover:border-stone-200/50 transition-all duration-300 group animate-fade-in-up"
                           onClick={() => {
                             setIsMobileMenuOpen(false)
                             setMobileSubmenu(null)
                           }}
                           style={{ animationDelay: `${index * 100}ms` }}
                         >
-                          <div className="font-semibold text-gray-900 group-hover:text-current transition-colors text-lg mb-1">
+                          <div className="font-semibold text-stone-900 group-hover:text-amber-500 transition-colors text-base mb-0.5">
                             {subItem.title}
                           </div>
-                          <div className="text-sm text-gray-600 leading-relaxed">{subItem.desc}</div>
+                          <div className="text-xs text-stone-600 leading-relaxed">{subItem.desc}</div>
                         </Link>
                       )
                     ))}
@@ -413,20 +357,34 @@ export default function Navigation() {
         </div>
       )}
 
-      {/* Add Custom CSS for Animations */}
+      {/* Custom Animations */}
       <style jsx>{`
-        @keyframes slide-in {
+        @keyframes scale-in {
           from {
             opacity: 0;
-            transform: translateY(-20px) scale(0.95);
+            transform: scale(0.95) translateY(-10px);
           }
           to {
             opacity: 1;
-            transform: translateY(0) scale(1);
+            transform: scale(1) translateY(0);
           }
         }
-        .animate-slide-in {
-          animation: slide-in 0.3s ease-out forwards;
+        @keyframes fade-in-up {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-scale-in {
+          animation: scale-in 0.3s ease-out forwards;
+        }
+        .animate-fade-in-up {
+          animation: fade-in-up 0.4s ease-out forwards;
+          opacity: 0;
         }
       `}</style>
     </>

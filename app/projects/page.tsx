@@ -102,7 +102,7 @@ export default function Projects() {
               Featured
               <span className="block text-slate-500">Projects</span>
             </h2>
-            <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8 sm:mb-12 px-2 sm:px-4">
+            <p className="text-base sm:text-base lg:text-lg xl:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8 sm:mb-12 px-2 sm:px-4">
               Over 40+ years of construction excellence. Each project represents our commitment to quality craftsmanship and innovative design.
             </p>
           </div>

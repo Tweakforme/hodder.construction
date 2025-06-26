@@ -205,7 +205,7 @@ export default function Commercial() {
                   <div 
                     className="w-full h-full bg-cover bg-center hover:scale-105 transition-transform duration-700"
                     style={{ 
-                      backgroundImage: 'url(/banner.jpg)',
+                      backgroundImage: 'url(/projects/petro-canada-dallas/1.jpg)',
                       filter: 'hue-rotate(15deg) saturate(105%)'
                     }}
                   />
@@ -214,7 +214,7 @@ export default function Commercial() {
                 {/* Floating Achievement Cards */}
                 <div className="absolute -bottom-4 -left-4 bg-white p-4 rounded-xl shadow-xl border border-gray-100">
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-blue-600 mb-1">{commercialProjects.length}+</div>
+                    <div className="text-2xl font-bold text-blue-600 mb-1">10+</div>
                     <div className="text-xs text-gray-600 font-medium">Commercial Projects</div>
                   </div>
                 </div>
@@ -266,7 +266,7 @@ export default function Commercial() {
               <div className="text-xs sm:text-sm text-gray-600 font-medium uppercase tracking-wide">Renovations</div>
             </div>
             <div className="bg-white rounded-xl p-4 sm:p-6 shadow-lg border border-gray-200 text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-purple-600 mb-1">10+</div>
+              <div className="text-2xl sm:text-3xl font-bold text-purple-600 mb-1">46+</div>
               <div className="text-xs sm:text-sm text-gray-600 font-medium uppercase tracking-wide">BC Projects</div>
             </div>
           </div>
@@ -512,9 +512,9 @@ export default function Commercial() {
               <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform duration-300">
                 <Building2 className="h-6 w-6 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Tenant Improvements</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Renovations</h3>
               <p className="text-sm sm:text-base text-gray-600 mb-6 leading-relaxed">
-                Complete tenant improvements, restaurant remodels, retail builds, and commercial renovations throughout Kamloops and Western Canada.
+                Complete tenant improvements, restaurant remodels, retail builds, and commercial renovations throughout Kamloops.
               </p>
               <a 
                 href="mailto:info@hodder.ca?subject=Tenant Improvement Inquiry"

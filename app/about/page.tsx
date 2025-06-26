@@ -71,7 +71,7 @@ export default function About() {
               </span>
             </h1>
             
-            <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-gray-200 leading-relaxed font-light max-w-4xl mx-auto px-2 sm:px-4">
+            <p className="text-lg sm:text-base lg:text-lg xl:text-xl text-gray-200 leading-relaxed font-light max-w-4xl mx-auto px-2 sm:px-4">
               Considering a new project? Wondering about a make-over? We would love to be part of your building and renovating dreams.
             </p>
             
@@ -159,7 +159,7 @@ export default function About() {
               What We
               <span className="block text-amber-500">Do</span>
             </h2>
-            <p className="text-sm sm:text-base lg:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed px-2">
+            <p className="text-lg sm:text-base lg:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed px-2">
               Whether replacing your windows, renovating your bathroom, kitchen or whole home, building your dream home or even developing commercial/residential property, we are committed to providing the best of both personal and professional service.
             </p>
           </div>
@@ -198,8 +198,8 @@ export default function About() {
           {/* Experience Highlight */}
           <div className="bg-gradient-to-br from-amber-500 to-yellow-600 rounded-xl sm:rounded-2xl lg:rounded-3xl p-6 sm:p-8 lg:p-10 xl:p-12 text-white">
             <div className="max-w-4xl mx-auto text-center">
-              <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4 sm:mb-6">Experienced Team You Can Trust</h3>
-              <p className="text-sm sm:text-base lg:text-lg xl:text-xl mb-6 sm:mb-8 text-white/90 leading-relaxed max-w-3xl mx-auto">
+              <h3 className="text-2xl sm:text-2xl lg:text-3xl font-bold mb-4 sm:mb-6">Experienced Team You Can Trust</h3>
+              <p className="text-lg sm:text-base lg:text-lg xl:text-xl mb-6 sm:mb-8 text-white/90 leading-relaxed max-w-3xl mx-auto">
                 If you have hired us before, chances are we have the same loyal staff, sub trades and suppliers. In fact, we have approximately 150 years of combined experience between all of us. We also employ a full time plumber.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-2xl mx-auto">
@@ -208,7 +208,7 @@ export default function About() {
                   <div className="text-xs sm:text-sm opacity-90 font-medium">Years Combined Experience</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-1 sm:mb-2">17+</div>
+                  <div className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-1 sm:mb-2">46+</div>
                   <div className="text-xs sm:text-sm opacity-90 font-medium">Projects Completed</div>
                 </div>
                 <div className="text-center">
@@ -237,7 +237,7 @@ export default function About() {
                 <span className="block text-amber-500">Our Team</span>
               </h2>
               
-              <p className="text-sm sm:text-base lg:text-lg text-gray-600 mb-6 sm:mb-8 leading-relaxed">
+              <p className="text-lg sm:text-base lg:text-lg text-gray-600 mb-6 sm:mb-8 leading-relaxed">
                 We are always on the look out for new talent and hard workers. Experience is key. We accept resumés and conduct interviews all year round so please do not hesitate to contact us.
               </p>
               
@@ -257,28 +257,28 @@ export default function About() {
               <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 sm:mt-3 flex-shrink-0"></div>
-                  <p className="text-sm sm:text-base text-gray-600">All wages are negotiable depending on level of experience</p>
+                  <p className="text-base sm:text-base text-gray-600">All wages are negotiable depending on level of experience</p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 sm:mt-3 flex-shrink-0"></div>
-                  <p className="text-sm sm:text-base text-gray-600">Valid Driver&apos;s Licence is an asset</p>
+                  <p className="text-base sm:text-base text-gray-600">Valid Driver&apos;s Licence is an asset</p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 sm:mt-3 flex-shrink-0"></div>
-                  <p className="text-sm sm:text-base text-gray-600">Experience in home construction, renovations, or plumbing is an asset</p>
+                  <p className="text-base sm:text-base text-gray-600">Experience in home construction, renovations, or plumbing is an asset</p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 sm:mt-3 flex-shrink-0"></div>
-                  <p className="text-sm sm:text-base text-gray-600">All positions can expect full time work, 8+ hours/day, 5 days a week</p>
+                  <p className="text-base sm:text-base text-gray-600">All positions can expect full time work, 8+ hours/day, 5 days a week</p>
                 </div>
               </div>
               
               <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-6 border border-amber-200/50">
                 <div className="flex items-center space-x-3 mb-2 sm:mb-3">
                   <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-amber-500 flex-shrink-0" />
-                  <span className="font-semibold text-gray-900 text-sm sm:text-base">Location</span>
+                  <span className="font-semibold text-gray-900 text-lg sm:text-base">Location</span>
                 </div>
-                <p className="text-gray-600 text-xs sm:text-sm">
+                <p className="text-gray-600 text-base sm:text-sm">
                   All work sites are in and around Kamloops area, with the main office located in the Mount Paul Industrial Park in Kamloops, B.C. Canada.
                 </p>
               </div>
@@ -298,7 +298,7 @@ export default function About() {
               More Ways We
               <span className="block text-amber-500">Serve You</span>
             </h2>
-            <p className="text-sm sm:text-base lg:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed px-2">
+            <p className="text-base sm:text-base lg:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed px-2">
               Beyond construction, we&apos;ve expanded to serve our community with quality rental properties, innovative automotive solutions, and essential home services.
             </p>
           </div>
@@ -440,7 +440,7 @@ export default function About() {
               Ready to Start
               <span className="block text-amber-400">Your Project?</span>
             </h2>
-            <p className="text-sm sm:text-base lg:text-xl text-gray-300 max-w-3xl mx-auto px-2">
+            <p className="text-base sm:text-base lg:text-xl text-gray-300 max-w-3xl mx-auto px-2">
               We stand proudly behind what we build. Let&apos;s discuss how we can bring your vision to life.
             </p>
           </div>

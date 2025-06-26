@@ -90,121 +90,115 @@ export default function ProjectDetail() {
     <div className="min-h-screen bg-gray-50">
       <Navigation />
 
-      {/* Hero Section with Adaptive Layout */}
-      <section className="relative">
-        <div className="relative h-[60vh] sm:h-[70vh] lg:h-[85vh] xl:h-[90vh]">
-          <div className="absolute inset-0">
-            <Image
-              src={images[currentImageIndex] || '/placeholder.jpg'}
-              alt={project.title}
-              fill
-              className="object-cover"
-              priority
-              sizes="100vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent" />
+    {/* Clean Mobile Hero Section */}
+<section className="relative">
+  <div className="relative h-[60vh] sm:h-[70vh] lg:h-[80vh]">
+    <div className="absolute inset-0">
+      <Image
+        src={images[currentImageIndex] || '/placeholder.jpg'}
+        alt={project.title}
+        fill
+        className="object-cover"
+        priority
+        sizes="100vw"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+    </div>
+
+    {/* Back Button - Hidden on Mobile */}
+    <div className="hidden sm:block absolute top-24 sm:top-28 left-4 sm:left-6 z-20">
+      <Link 
+        href="/projects"
+        className="inline-flex items-center bg-black/40 backdrop-blur-md hover:bg-black/60 text-white px-4 py-2.5 rounded-full transition-all duration-300 text-sm font-medium border border-white/20"
+      >
+        <ArrowLeft className="h-4 w-4 mr-2" />
+        <span>Back to Projects</span>
+      </Link>
+    </div>
+
+    {/* Simplified Hero Content */}
+    <div className="absolute bottom-0 left-0 right-0 z-10">
+      <div className="px-4 sm:px-6 pb-8 sm:pb-12">
+        
+        {/* Minimal Project Meta - Only on larger screens */}
+        <div className="hidden sm:flex items-center gap-3 mb-4">
+          <span className={`px-3 py-1.5 text-white text-sm font-medium rounded-full backdrop-blur-sm ${
+            project.status === 'completed' 
+              ? 'bg-green-600/80' 
+              : 'bg-blue-600/80'
+          }`}>
+            {project.status === 'completed' ? 'Completed' : 'In Progress'}
+          </span>
+          
+          <div className="flex items-center space-x-2 text-white/90 bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-full">
+            <Calendar className="h-4 w-4" />
+            <span className="text-sm">{project.year}</span>
           </div>
-
-          {/* Floating Back Button */}
-          <div className="absolute top-20 sm:top-24 lg:top-28 left-3 sm:left-6 lg:left-8 z-20">
-            <Link 
-              href="/projects"
-              className="inline-flex items-center bg-white/15 backdrop-blur-md hover:bg-white/25 text-white px-3 sm:px-4 lg:px-5 py-2 sm:py-2.5 lg:py-3 rounded-full transition-all duration-300 text-sm sm:text-base group border border-white/20 shadow-xl"
-            >
-              <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5 mr-1.5 sm:mr-2 group-hover:-translate-x-1 transition-transform" />
-              <span className="hidden sm:inline">Back to </span>Projects
-            </Link>
-          </div>
-
-          {/* Hero Content */}
-          <div className="absolute bottom-0 left-0 right-0 z-10">
-            <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pb-6 sm:pb-8 lg:pb-12">
-              
-              {/* Project Meta */}
-              <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3 sm:mb-5">
-                <span className={`px-3 py-1.5 text-white text-xs sm:text-sm font-semibold rounded-full backdrop-blur-sm border border-white/20 ${
-                  project.status === 'completed' 
-                    ? 'bg-green-500/90' 
-                    : 'bg-blue-500/90'
-                }`}>
-                  {project.status === 'completed' ? 'Completed' : 'In Progress'}
-                </span>
-                
-                <div className="flex items-center space-x-1.5 text-white/90 bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/10">
-                  <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
-                  <span className="text-xs sm:text-sm font-medium">{project.year}</span>
-                </div>
-                
-                <div className="flex items-center space-x-1.5 text-white/90 bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/10">
-                  <MapPin className="h-3 w-3 sm:h-4 sm:w-4" />
-                  <span className="text-xs sm:text-sm font-medium">{project.location}</span>
-                </div>
-
-                <div className="hidden sm:flex items-center space-x-1.5 text-white/90 bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/10">
-                  <Building className="h-3 w-3 sm:h-4 sm:w-4" />
-                  <span className="text-xs sm:text-sm font-medium capitalize">{project.category}</span>
-                </div>
-              </div>
-              
-              {/* Project Title */}
-              <h1 className="font-bold text-white mb-3 sm:mb-5 leading-tight tracking-tight" style={{ fontSize: 'clamp(1.75rem, 6vw, 4rem)' }}>
-                {project.title}
-              </h1>
-              
-              {/* Project Description */}
-              <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-white/95 mb-4 sm:mb-6 max-w-4xl leading-relaxed font-light">
-                {project.description}
-              </p>
-
-              {/* Hero Controls */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
-                {/* Image Navigation */}
-                <div className="flex items-center bg-black/40 backdrop-blur-md rounded-full p-1 border border-white/20">
-                  <button
-                    onClick={prevImage}
-                    className="p-2 sm:p-2.5 text-white hover:bg-white/20 rounded-full transition-all duration-300"
-                    aria-label="Previous image"
-                  >
-                    <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
-                  </button>
-                  
-                  <div className="px-3 sm:px-4 py-1.5 text-white text-xs sm:text-sm font-medium">
-                    {currentImageIndex + 1} / {images.length}
-                  </div>
-                  
-                  <button
-                    onClick={nextImage}
-                    className="p-2 sm:p-2.5 text-white hover:bg-white/20 rounded-full transition-all duration-300"
-                    aria-label="Next image"
-                  >
-                    <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
-                  </button>
-                </div>
-                
-                {/* Action Buttons */}
-                <div className="flex gap-2 sm:gap-3">
-                  <button
-                    onClick={() => openLightbox(currentImageIndex)}
-                    className="bg-gray-900/90 hover:bg-gray-900 backdrop-blur-sm text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-full transition-all duration-300 text-sm font-semibold flex items-center gap-2 border border-white/10 hover:scale-105"
-                  >
-                    <Maximize className="h-4 w-4" />
-                    <span className="hidden sm:inline">Full Size</span>
-                  </button>
-                  
-                  <button
-                    onClick={() => setGalleryView('grid')}
-                    className="bg-white/15 hover:bg-white/25 backdrop-blur-sm text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-full transition-all duration-300 text-sm font-semibold flex items-center gap-2 border border-white/20"
-                  >
-                    <Images className="h-4 w-4" />
-                    <span className="hidden sm:inline">Gallery</span>
-                  </button>
-                </div>
-              </div>
-            </div>
+          
+          <div className="flex items-center space-x-2 text-white/90 bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-full">
+            <MapPin className="h-4 w-4" />
+            <span className="text-sm">{project.location}</span>
           </div>
         </div>
-      </section>
+        
+        {/* Clean Project Title */}
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight">
+          {project.title}
+        </h1>
+        
+        {/* Simplified Description */}
+        <p className="text-base sm:text-lg text-white/90 mb-6 sm:mb-8 max-w-2xl leading-relaxed">
+          {project.description}
+        </p>
+
+        {/* Clean Controls */}
+        <div className="flex items-center gap-4">
+          {/* Image Navigation */}
+          <div className="flex items-center bg-black/40 backdrop-blur-md rounded-full border border-white/20">
+            <button
+              onClick={prevImage}
+              className="p-3 text-white hover:bg-white/20 rounded-full transition-all duration-300"
+              aria-label="Previous image"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            
+            <div className="px-4 py-2 text-white text-sm font-medium">
+              {currentImageIndex + 1} / {images.length}
+            </div>
+            
+            <button
+              onClick={nextImage}
+              className="p-3 text-white hover:bg-white/20 rounded-full transition-all duration-300"
+              aria-label="Next image"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          </div>
+          
+          {/* Action Buttons - Only on larger screens */}
+          <div className="hidden sm:flex gap-3">
+            <button
+              onClick={() => openLightbox(currentImageIndex)}
+              className="bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white px-4 py-2.5 rounded-full transition-all duration-300 text-sm font-medium flex items-center gap-2 border border-white/30"
+            >
+              <Maximize className="h-4 w-4" />
+              Full Size
+            </button>
+            
+            <button
+              onClick={() => setGalleryView('grid')}
+              className="bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white px-4 py-2.5 rounded-full transition-all duration-300 text-sm font-medium flex items-center gap-2 border border-white/30"
+            >
+              <Images className="h-4 w-4" />
+              Gallery
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Project Content */}
       <section className="py-8 sm:py-12 lg:py-16 xl:py-20 bg-white">

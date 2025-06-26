@@ -53,7 +53,7 @@ export default function Sales() {
                 </span>
               </h1>
               
-              <p className="text-sm sm:text-base lg:text-lg text-stone-200 leading-relaxed font-light max-w-3xl mx-auto px-2 sm:px-4">
+              <p className="text-base sm:text-base lg:text-lg text-stone-200 leading-relaxed font-light max-w-3xl mx-auto px-2 sm:px-4">
                 While we don&apos;t currently have completed homes available for immediate purchase, we&apos;re creating something even better - custom homes designed exclusively for you.
               </p>
             </div>
@@ -353,7 +353,7 @@ export default function Sales() {
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-4 w-4 text-emerald-500 flex-shrink-0" />
-                  <span className="text-stone-700 text-sm">Prime Kamloops locations</span>
+                  <span className="text-stone-700 text-sm">Great Kamloops locations</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-4 w-4 text-emerald-500 flex-shrink-0" />
@@ -387,7 +387,7 @@ export default function Sales() {
               <div className="space-y-3 mb-6">
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-4 w-4 text-emerald-500 flex-shrink-0" />
-                  <span className="text-stone-700 text-sm">17+ completed projects</span>
+                  <span className="text-stone-700 text-sm">46+ completed projects</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-4 w-4 text-emerald-500 flex-shrink-0" />
